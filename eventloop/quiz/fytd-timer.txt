@@ -1,1 +1,14 @@
 - In eventloop/timer.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+console log:
+someAsyncOperation
+101ms have passed since I was scheduled
+
+1. 150ms
+The order of the execution does not change because the event loop processes the timer callback after
+the current executing callback from someAsyncOperation
+But the timer callback will be delayed for adding 50ms more time
+
+2. 0
+The order has changed because the setTimeout would log its message before someAsyncOperation
+it depends on the timing of the event loop's processing of timer callbacks relative to I/O callbacks

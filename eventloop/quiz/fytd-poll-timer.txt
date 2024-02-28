@@ -1,3 +1,12 @@
 - Explain the order of execution in terms of the event loop for eventloop/poll_timer.js.
 - Will the order of execution change if the delay in the while loop is changed from 10s to 150s? Why or why not?
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+console log:
+foo
+done
+Read Error
+
+call foo() -> "foo"
+console.log("done)" after calling foo() -> "done"
+callback of readFile in someAsyncOperation() -> "Read Error" or "Data", executed after completing read operation

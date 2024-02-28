@@ -1,1 +1,15 @@
 - In eventloop/poll.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+console log:
+foo
+baz
+foo
+baz
+2 : bar
+1 : bar
+
+1. call first foo(2) -> "foo"
+2. call first foo(2) -> "baz"
+3. call second foo(1) -> "foo"
+4. call second foo(1) -> "baz"
+5. setTimeout in first foo(2) -> "2 : bar"
+6. setTimeout in second foo(2) -> "1 : bar"
